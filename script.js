@@ -35,7 +35,13 @@ function Round(playerchoice, computerchoice) {
     }
 }
 
-
+function endScore(score) {
+    if (score > 2) {
+        return "You beat the computer this time, but the next time might not be the same!";
+    } else {
+        return "Of course you lost... it was inevitable, the computer always wins!";
+    }
+}
 
 let score = 0;
 
@@ -59,3 +65,5 @@ for (let i = 0; i < 5; i++) {
     }
 
 }
+
+console.log(endScore(score));
