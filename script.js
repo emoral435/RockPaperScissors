@@ -13,34 +13,49 @@ function getComputerChoice() {
 function Round(playerchoice, computerchoice) {
     playerchoice = playerchoice.toLowerCase();
     if (playerchoice === computerchoice) {
-        return `You both put ${playerchoice}! Draw.`;
+        return "Draw";
     } else if (playerchoice === "scissors") {
         if (computerchoice === "rock") {
-            computerchoice = computerchoice.charAt(0).toUpperCase() + computerchoice.slice(1);
-            return `You lose! ${computerchoice} beats ${playerchoice}!`;
+            return "Lose";
         } else {
-            playerchoice = playerchoice.charAt(0).toUpperCase() + playerchoice.slice(1);
-            return `You win! ${playerchoice} beats ${computerchoice}!`;
+            return "Win";
         }
-    } else if (playerchoice == "rock") {
+    } else if (playerchoice === "rock") {
         if (computerchoice === "paper") {
-            computerchoice = computerchoice.charAt(0).toUpperCase() + computerchoice.slice(1);
-            return `You lose! ${computerchoice} beats ${playerchoice}!`;
+            return "Lose";
         } else {
-            playerchoice = playerchoice.charAt(0).toUpperCase() + playerchoice.slice(1);
-            return `You win! ${playerchoice} beats ${computerchoice}!`;
+            return "Win";
         }
     } else {
         if (computerchoice === "scissors") {
-            computerchoice = computerchoice.charAt(0).toUpperCase() + computerchoice.slice(1);
-            return `You lose! ${computerchoice} beats ${playerchoice}!`;
+            return "Lose";
         } else {
-            playerchoice = playerchoice.charAt(0).toUpperCase() + playerchoice.slice(1);
-            return `You win! ${playerchoice} beats ${computerchoice}!`;
+            return "Win";
         }
     }
 }
 
-let playerchoice = "Rock";
-let computerchoice = getComputerChoice()
-console.log(Round(playerchoice, computerchoice))
+
+
+let score = 0;
+
+for (let i = 0; i < 5; i++) {
+    let computerchoice = getComputerChoice();
+    playerchoice = prompt("What will you pick to go against the unbeatbale machine?", "rock").toLowerCase();
+    result = Round(playerchoice, computerchoice)
+    if (result == "Draw"){
+        result_output = `You draw! You both played ${playerchoice}.`
+        console.log(result_output);
+        console.log(score);
+    } else if (result == "Win") {
+        result_output = `You won against the unbeatable machine!? Your choice, ${playerchoice}, beat the computer's ${computerchoice}!`;
+        score++;
+        console.log(result_output);
+        console.log(score);
+    } else {
+        result_output = `You lost against the unbeatable machine. It is only to be expected... your choice, ${playerchoice}, loses against the computer's ${computerchoice}.`
+        console.log(result_output);
+        console.log(score);
+    }
+
+}
